@@ -93,7 +93,7 @@ class cyradm
 			$_cmd = '. capability';
 			$result = $this->command($_cmd);
 			foreach($result as $resline) {
-				if (eregi("(RIGHTS=){1}[texk]{4}",$resline)) {
+				if (preg_match("/(RIGHTS=){1}[texk]{4}/i",$resline)) {
 					$this->allacl = 'lrswipkxtecda';
 				}
 			}

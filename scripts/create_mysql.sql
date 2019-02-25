@@ -1,140 +1,184 @@
-# phpMyAdmin MySQL-Dump
-# version 2.2.6
-# http://phpwizard.net/phpMyAdmin/
-# http://www.phpmyadmin.net/ (download page)
-#
-# Host: localhost
-# Generation Time: Nov 04, 2002 at 01:44 AM
-# Server version: 3.23.52
-# PHP Version: 4.2.3
-# Database : `mail`
-# --------------------------------------------------------
+-- MySQL dump 10.13  Distrib 5.6.30, for Linux (x86_64)
+--
+-- Host: localhost    Database: mail
+-- ------------------------------------------------------
+-- Server version	5.6.30-log
 
-#
-# Table structure for table `accountuser`
-#
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
-CREATE TABLE accountuser (
-  username varchar(255) binary NOT NULL default '',
-  password varchar(50) binary NOT NULL default '',
-  prefix varchar(50) NOT NULL default '',
-  domain_name varchar(255) NOT NULL default '',
-  imap int(10) NOT NULL default '1',
-  pop int(10) NOT NULL default '1',
-  sieve int(10) NOT NULL default '1',
-  smtpauth int(10) NOT NULL default '1',
-  UNIQUE KEY username (username)
-) TYPE=MyISAM;
-# --------------------------------------------------------
+--
+-- Table structure for table `accountuser`
+--
 
-#
-# Table structure for table `adminuser`
-#
+DROP TABLE IF EXISTS `accountuser`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `accountuser` (
+  `username` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL DEFAULT '',
+  `password` varchar(50) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL DEFAULT '',
+  `prefix` varchar(50) NOT NULL DEFAULT '',
+  `domain_name` varchar(255) NOT NULL DEFAULT '',
+  `imap` int(10) NOT NULL DEFAULT '1',
+  `pop` int(10) NOT NULL DEFAULT '1',
+  `sieve` int(10) NOT NULL DEFAULT '1',
+  `smtpauth` int(10) NOT NULL DEFAULT '1',
+  UNIQUE KEY `username` (`username`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
-CREATE TABLE adminuser (
-  username varchar(50) binary NOT NULL default '',
-  password varchar(50) binary NOT NULL default '',
-  type int(11) NOT NULL default '0',
-  SID varchar(255) NOT NULL default '',
-  home varchar(255) NOT NULL default '',
-  PRIMARY KEY  (username)
-) TYPE=MyISAM;
-# --------------------------------------------------------
+--
+-- Table structure for table `adminuser`
+--
 
-#
-# Table structure for table `settings`
-#
+DROP TABLE IF EXISTS `adminuser`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `adminuser` (
+  `username` varchar(50) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL DEFAULT '',
+  `password` varchar(50) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL DEFAULT '',
+  `type` int(11) NOT NULL DEFAULT '0',
+  `SID` varchar(255) NOT NULL DEFAULT '',
+  `home` varchar(255) NOT NULL DEFAULT '',
+  PRIMARY KEY (`username`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
-CREATE TABLE settings (
-  `username` varchar(50) binary NOT NULL default '',
-  `style` varchar(50) NOT NULL default 'default',
-  `maxdisplay` int(4) NOT NULL default '15',
-  `warnlevel` int(3) NOT NULL default '90',
-  PRIMARY KEY  (username)
-) TYPE=MyISAM;
-# --------------------------------------------------------
+--
+-- Table structure for table `alias`
+--
 
-#
-# Table structure for table `alias`
-#
+DROP TABLE IF EXISTS `alias`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `alias` (
+  `alias` varchar(255) NOT NULL DEFAULT '',
+  `dest` longtext,
+  `username` varchar(50) NOT NULL DEFAULT '',
+  `status` int(11) NOT NULL DEFAULT '1',
+  PRIMARY KEY (`alias`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
-CREATE TABLE alias (
-  alias varchar(255) NOT NULL default '',
-  dest longtext,
-  username varchar(50) NOT NULL default '',
-  status int(11) NOT NULL default '1',
-  PRIMARY KEY  (alias)
-) TYPE=MyISAM;
-# --------------------------------------------------------
+--
+-- Table structure for table `domain`
+--
 
-#
-# Table structure for table `domain`
-#
+DROP TABLE IF EXISTS `domain`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `domain` (
+  `domain_name` varchar(255) NOT NULL DEFAULT '',
+  `prefix` varchar(50) NOT NULL DEFAULT '',
+  `maxaccounts` int(11) NOT NULL DEFAULT '20',
+  `quota` int(10) NOT NULL DEFAULT '20000',
+  `domainquota` int(10) NOT NULL DEFAULT '0',
+  `transport` varchar(255) NOT NULL DEFAULT 'cyrus',
+  `freenames` enum('YES','NO') NOT NULL DEFAULT 'NO',
+  `freeaddress` enum('YES','NO') NOT NULL DEFAULT 'NO',
+  `folders` varchar(255) NOT NULL DEFAULT '',
+  PRIMARY KEY (`domain_name`),
+  UNIQUE KEY `prefix` (`prefix`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
-CREATE TABLE domain (
-  domain_name varchar(255) NOT NULL default '',
-  prefix varchar(50) NOT NULL default '',
-  maxaccounts int(11) NOT NULL default '20',
-  quota int(10) NOT NULL default '20000',
-  domainquota int(10) NOT NULL default '0',
-  transport varchar(255) NOT NULL default 'cyrus',
-  freenames enum('YES','NO') NOT NULL default 'NO',
-  freeaddress enum('YES','NO') NOT NULL default 'NO',
-  folders varchar(255) NOT NULL default '',
-  PRIMARY KEY  (domain_name),
-  UNIQUE KEY prefix (prefix)
-) TYPE=MyISAM;
-# --------------------------------------------------------
+--
+-- Table structure for table `domainadmin`
+--
 
-#
-# Table structure for table `domainadmin`
-#
+DROP TABLE IF EXISTS `domainadmin`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `domainadmin` (
+  `domain_name` varchar(255) NOT NULL DEFAULT '',
+  `adminuser` varchar(255) NOT NULL DEFAULT ''
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
-CREATE TABLE domainadmin (
-  domain_name varchar(255) NOT NULL default '',
-  adminuser varchar(255) NOT NULL default ''
-) TYPE=MyISAM;
-# --------------------------------------------------------
+--
+-- Table structure for table `log`
+--
 
-#
-# Table structure for table `search`
-#
+DROP TABLE IF EXISTS `log`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `log` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `msg` text NOT NULL,
+  `user` varchar(255) NOT NULL DEFAULT '',
+  `host` varchar(255) NOT NULL DEFAULT '',
+  `time` datetime NOT NULL DEFAULT '2000-00-00 00:00:00',
+  `pid` varchar(255) NOT NULL DEFAULT '',
+  PRIMARY KEY (`id`),
+  KEY `idx_log_user` (`user`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
-CREATE TABLE search (
-  search_id varchar(255) NOT NULL default '',
-  search_sql text NOT NULL,
-  perpage int(11) NOT NULL default '0',
-  timestamp timestamp(14) NOT NULL,
-  PRIMARY KEY  (search_id),
-  KEY search_id (search_id)
-) TYPE=MyISAM;
-# --------------------------------------------------------
+--
+-- Table structure for table `search`
+--
 
-#
-# Table structure for table `virtual`
-#
+DROP TABLE IF EXISTS `search`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `search` (
+  `search_id` varchar(255) NOT NULL DEFAULT '',
+  `search_sql` text NOT NULL,
+  `perpage` int(11) NOT NULL DEFAULT '0',
+  `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`search_id`),
+  KEY `search_id` (`search_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
-CREATE TABLE virtual (
-  alias varchar(255) NOT NULL default '',
-  dest longtext,
-  username varchar(50) NOT NULL default '',
-  status int(11) NOT NULL default '1',
-  KEY alias (alias)
-) TYPE=MyISAM;
+--
+-- Table structure for table `settings`
+--
 
-CREATE TABLE log (
-  id int(11) NOT NULL auto_increment,
-  msg text NOT NULL,
-  user varchar(255) NOT NULL default '',
-  host varchar(255) NOT NULL default '',
-  time datetime NOT NULL default '2000-00-00 00:00:00',
-  pid varchar(255) NOT NULL default '',
-  PRIMARY KEY  (id)
-) TYPE=MyISAM;
+DROP TABLE IF EXISTS `settings`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `settings` (
+  `username` varchar(50) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL DEFAULT '',
+  `style` varchar(50) NOT NULL DEFAULT 'default',
+  `maxdisplay` int(4) NOT NULL DEFAULT '15',
+  `warnlevel` int(3) NOT NULL DEFAULT '90',
+  PRIMARY KEY (`username`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
-INSERT INTO adminuser (username, password) VALUES ('admin', ENCRYPT('test'));
-INSERT INTO domainadmin (domain_name,adminuser) VALUES ('*','admin');
-INSERT INTO accountuser (username, password) VALUES ('cyrus', ENCRYPT('secret'));
-INSERT INTO `settings` ( `username` , `style` , `maxdisplay` , `warnlevel` ) VALUES ( 'admin', 'default', '15', '90');
+--
+-- Table structure for table `virtual`
+--
 
-ALTER TABLE `log` ADD INDEX `idx_log_user` ( `user` ); 
+DROP TABLE IF EXISTS `virtual`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `virtual` (
+  `alias` varchar(255) NOT NULL DEFAULT '',
+  `dest` longtext,
+  `username` varchar(50) NOT NULL DEFAULT '',
+  `status` int(11) NOT NULL DEFAULT '1',
+  PRIMARY KEY (`alias`),
+  KEY `alias` (`alias`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2017-01-01 15:16:26

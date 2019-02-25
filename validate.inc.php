@@ -42,7 +42,7 @@ if ($_POST){
 // ############################### FUNCTIONS ##################################
 
 function ValidMail($email) {
-	if (!eregi("^[0-9a-z]([-_.]?[0-9a-z])*@([[:alnum:]]|xn--)([.-]?[[:alnum:]])*[.][a-wyz][[:alpha:]](f|g|l|m|t|u|v|z|ro|fo|op|pa|me|seum)?$",$email)){
+	if (!preg_match("/^[0-9a-z]([-_.]?[0-9a-z])*@([[:alnum:]]|xn--)([.-]?[[:alnum:]])*[.][a-wyz][[:alpha:]](f|g|l|m|t|u|v|z|ro|fo|op|pa|me|seum)?$/i",$email)){
 		return FALSE;
 	} else {
 		return TRUE;
@@ -66,7 +66,7 @@ function ValidPassword($password) {
 }
 
 function ValidDomain($domain) {
-	if (!eregi("^([[:alnum:]]|xn--)([.-]?[[:alnum:]])*[.][a-wyz][[:alpha:]](f|g|l|m|t|u|v|z|ro|fo|op|pa|me|seum)?$",$domain)){
+	if (!preg_match("/^([[:alnum:]]|xn--)([.-]?[[:alnum:]])*[.][a-wyz][[:alpha:]](f|g|l|m|t|u|v|z|ro|fo|op|pa|me|seum|ga|rlin)?$/i",$domain)){
 		return FALSE;
 	} else {
 		return TRUE;
@@ -79,7 +79,7 @@ function ValidPrefix($prefix) {
 	if ($DOMAIN_AS_PREFIX) {
 		return ValidDomain($prefix);
 	} else {
-//		if (!eregi("^[[:alnum:]_-]+$",$prefix)){
+//		if (!preg_match("/^[[:alnum:]_-]+$/i",$prefix)){
 		if (empty($prefix)) {
 			return FALSE;
 		} else {
