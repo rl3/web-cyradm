@@ -119,7 +119,7 @@ if ($authorized){
 				$row = $result->fetchRow(DB_FETCHMODE_ASSOC, 0);
 				$freeaddress = $row['freeaddress'];
 				if ($freeaddress!="YES") {
-                            	    $aliasname = spliti("@",$_GET['alias'],2);
+                            	    $aliasname = preg_split("/@/",$_GET['alias'],2);
 				    $aliasname = $aliasname[0];
 				    $alias_new = $aliasname."@".$_GET['domain'];
 				    if ($alias_new != $_GET['alias']) {

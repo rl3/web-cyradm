@@ -47,7 +47,7 @@ if ($authorized){
 	} elseif (!empty($_GET['cancel'])) {
 		include WC_BASE . "/editaccount.php";
 	} else {
-		$alias_orig = spliti('@',$alias,2);
+		$alias_orig = preg_split('/@/',$alias,2);
 		$aliasname = $alias_orig[0];
 		$aliasdomain = $alias_orig[1];
 		$dest = $row['dest'];
