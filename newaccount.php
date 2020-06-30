@@ -144,7 +144,7 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 					}
 					// END Andreas Kreisl : freenames
 
-					$test = ereg ("[0-9][0-9][0-9][0-9]$", $lastaccount, $result_array);
+					$test = preg_match("[0-9][0-9][0-9][0-9]$", $lastaccount, $result_array);
 					$next = $result_array[0] + 1;
 
 					$nextaccount = sprintf("%04d",$next);
