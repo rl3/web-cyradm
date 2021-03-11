@@ -9,14 +9,14 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 # Connecting to database
 $handle =& DB::connect($DB['DSN'],true);
 if (DB::isError($handle)) {
-	die (_("Database error"));
+	die (_("Database error (init 12)"));
 }
 
 #### Getting admin settings
 $query = "SELECT * FROM settings WHERE username='".$_SESSION['user']."'";
 $result = $handle->query($query);
 if (DB::isError($result)) {
-	die (_("Database error").": "._("Check scripts/upgrade-*.sql files."));
+	die (_("Database error (init 19)").": "._("Check scripts/upgrade-*.sql files."));
 }
 $row = $result->fetchRow(DB_FETCHMODE_ASSOC, 0);
 $_SESSION['style'] = $row['style'];

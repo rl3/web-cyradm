@@ -51,7 +51,7 @@ if ($authorized) {
 			$query = "DELETE FROM virtual WHERE alias='".$_GET['alias']."' AND username='".$_GET['username']."'";
 			$result = $handle->query($query);
 			if (DB::isError($result)) {
-				die (_("Database error"));
+				die (_("Database error (deleteemail 54)"));
 			}
 
 			#TODO: Removing forwards from sieve script

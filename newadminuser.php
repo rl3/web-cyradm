@@ -134,13 +134,13 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 				$query = "INSERT INTO adminuser (username , password , type ) VALUES ('".$_POST['newadminuser']."','".$password."','".$_POST['newadmintype']."')";
 				$result = $handle->query($query);
 				if (DB::isError($result)) {
-					die (_("Database error"));
+					die (_("Database error (newadminuser 137)"));
 				}
 				# Save initial setup for new admin
 				$query = "INSERT INTO settings (username) VALUES ('".$_POST['newadminuser']."')";
 				$result = $handle->query($query);
 				if (DB::isError($result)) {
-					die (_("Database error"));
+					die (_("Database error (newadminuser 143)"));
 				}
 				# Save domain which new admin will be responsible for
 				# If admin is superuser, he will be responsible for all domains
@@ -148,14 +148,14 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 					$query = "INSERT INTO domainadmin (domain_name , adminuser) values ('*' , '".$_POST['newadminuser']."')";
 					$result = $handle->query($query);
 					if (DB::isError($result)) {
-						die (_("Database error"));
+						die (_("Database error (newadminuser 151)"));
 					}
 				}
 				else if (!empty($_POST['newdomain'])){
 					$query = "INSERT INTO domainadmin (domain_name , adminuser) values ('".$_POST['newdomain']."' ,'".$_POST['newadminuser']."')";
 					$result = $handle->query($query);
 					if (DB::isError($result)) {
-						die (_("Database error"));
+						die (_("Database error (newadminuser 158)"));
 					}
 				}
 				?>

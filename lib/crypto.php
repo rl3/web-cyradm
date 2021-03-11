@@ -27,7 +27,7 @@ class password{
 			$handle=DB::connect ($DB['DSN'],true);
 
 			if (DB::isError($handle)) {
-				die (_("Database error"));
+				die (_("Database error (crypto 30)"));
 			}
 		
 	       	$result = $handle->query($query);
@@ -107,7 +107,7 @@ class password{
 			$handle=DB::connect ($DB['DSN'],true);
 
 			if (DB::isError($handle)) {
-                                die (_("Database error"));
+                                die (_("Database error (crypto 110)"));
                         }
 
 			$result = $handle->query($query);
@@ -157,7 +157,7 @@ class password{
 		$handle=DB::connect ($DB['DSN'],true);
 
 		if (DB::isError($handle)) {
-                        die (_("Database error"));
+                        die (_("Database error (crypto 160)"));
             	}
 
 		$result = $handle->query($query);

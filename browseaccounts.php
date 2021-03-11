@@ -33,7 +33,7 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 	$query = "SELECT * FROM accountuser where domain_name='".$_GET['domain']."' ORDER BY username";
 	$result = $handle->query($query);
 	if (DB::isError($result)) {
-		die (_("Database error"));
+		die (_("Database error (browseaccounts 36)"));
 	}
 	$cnt = $result->numRows($result);
 
@@ -118,7 +118,7 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 					$query2 = "SELECT * FROM virtual WHERE dest='".$username."' AND username='".$username."'"; # AND alias  !='$username'"; 
 					$result2 = $handle->query($query2);
 					if (DB::isError($result2)) {
-						die (_("Database error"));
+						die (_("Database error (browseaccounts 121)"));
 					}
 					$cnt2 = $result2->numRows($result2);
 
@@ -171,7 +171,7 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 				                        $query4 = "SELECT * FROM virtual WHERE alias='".$username."' AND username=''";
 							$result4 = $handle->query($query4);
 							if (DB::isError($result4)) {
-								die (_("Database error"));
+								die (_("Database error (browseaccounts 174)"));
 							}
 							$row4 = $result4->fetchRow(DB_FETCHMODE_ASSOC, 0);
 							if (is_array($row4)){

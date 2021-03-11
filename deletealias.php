@@ -55,7 +55,7 @@ if ($authorized) {
 			$query = "DELETE FROM virtual WHERE alias='".$_GET['alias']."' AND dest='".$_GET['dest']."' AND username = '".$_GET['domain']."'";
 			$result = $handle->query($query);
 			if (DB::isError($result)) {
-				die (_("Database error"));
+				die (_("Database error (deletealias 58)"));
 			} else {
 				print _("Removed")." <b>".$_GET['dest']."</b> "._("from")." <b>".$_GET['alias']."</b>.\n";
 				include WC_BASE . "/editalias.php";
@@ -65,7 +65,7 @@ if ($authorized) {
 			$query = "DELETE FROM virtual WHERE alias = '".$_GET['alias']."' AND username = '".$_GET['domain']."'";
 			$result = $handle->query($query);
 			if (DB::isError($result)) {
-				die (_("Database error"));
+				die (_("Database error (deletealias 68)"));
 			} else {
 				print _("Removed the alias")." <b>".$_GET['alias']."</b>\n";
 				include WC_BASE . "/aliases.php";

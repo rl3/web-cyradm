@@ -91,7 +91,7 @@ if ($authorized) {
 				} else {
 					?>
 					<h3>
-						<?php print _("Database error, please try again");?>
+						<?php print _("Database error (editdomain 94), please try again");?>
 					</h3>
 					<?php
 				}

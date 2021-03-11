@@ -47,7 +47,7 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 
 				$result = $handle->query($query);
 				if (DB::isError($result)) {
-					die (_("Database error"));
+					die (_("Database error (browse 50)"));
 				}
 //				$result = $handle->limitQuery($query,$row_pos,$_SESSION['maxdisplay']);
 				$cnt    = $result->numRows($result);

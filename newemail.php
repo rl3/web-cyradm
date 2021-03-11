@@ -16,7 +16,7 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 	                $query = "SELECT freeaddress FROM domain WHERE domain_name='".$_GET['domain']."'";
 	 		$result = $handle->query($query);
 			if (DB::isError($result)) {
-				die (_("Database error"));
+				die (_("Database error (newemail 19)"));
 			}
 			$row = $result->fetchRow(DB_FETCHMODE_ASSOC, 0);
 			$freeaddress=$row['freeaddress'];
@@ -42,7 +42,7 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 				} else {
 					?>
 					<h3>
-						<?php print _("Database error, please try again");?>
+						<?php print _("Database error (newemail 45), please try again");?>
 					</h3>
 					<?php
 					include WC_BASE . "/editaccount.php";

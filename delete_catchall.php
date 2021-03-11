@@ -17,7 +17,7 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 			$query = "DELETE from virtual WHERE alias='@".$_GET['domain']."'";
 			$result = $handle->query($query);
 			if (DB::isError($result)) {
-				die (_("Database error"));
+				die (_("Database error (delete_catchall 20)"));
 			} else {
 				?>
 				<h3>

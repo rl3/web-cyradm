@@ -20,7 +20,7 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 		}
 		$result = $handle->query($query);
 		if (DB::isError($result)) {
-			die (_("Database error"));
+			die (_("Database error (newaccount 23)"));
 		}
 
 		$row = $result->fetchRow(DB_FETCHMODE_ASSOC, 0);
@@ -51,7 +51,7 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 			$query = "SELECT * FROM accountuser WHERE prefix='$prefix' order by username";
 			$result = $handle->query($query);
 			if (DB::isError($result)) {
-				die (_("Database error"));
+				die (_("Database error (newaccount 54)"));
 			}
 			$cnt = $result->numRows();
 			
@@ -283,13 +283,13 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 			$query = "INSERT INTO accountuser (username, password, prefix, domain_name) VALUES ('".$username."','".$password."','".$prefix."','".$_POST['domain']."')";
 			$result = $handle->query($query);
 			if (DB::isError($result)) {
-				die (_("Database error"));
+				die (_("Database error (newaccount 286)"));
 			}
 
 			$query = "INSERT INTO virtual (alias, dest, username, status) values ( '".$_POST['email']."@".$_POST['domain']."','".$username."','".$username."','1')";
 			$result = $handle->query($query);
 			if (DB::isError($result)) {
-				die (_("Database error"));
+				die (_("Database error (newaccount 292)"));
 			}
 			?>
 				<h3>

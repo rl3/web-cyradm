@@ -105,7 +105,7 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 			$query = "INSERT INTO virtual (alias, dest, username, status) values ('@".$_GET['domain']."' , '$username' , '$username' , '1')";
 			$result = $handle->query($query);
 			if (DB::isError($result)) {
-				die (_("Database error"));
+				die (_("Database error (catchall 108)"));
 			} else {
 			?>
 				<h3>

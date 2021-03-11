@@ -62,8 +62,8 @@ if (!empty($dbroot) && !empty($dbrootpassword)){
 
 
 	if (DB::isError($handle)) {
-		#die (_("Database error"));
-		die ("<h3><font color='red'>Database error</font></h3>");
+		#die (_("Database error (index 65)"));
+		die ("<h3><font color='red'>Database error (index 66)</font></h3>");
 	}
 
 	#$query="SELECT Db from db";

@@ -36,7 +36,7 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 				$query = "SELECT * FROM accountuser WHERE username ='".$_GET['username']."'";
 				$result = $handle->query($query);
 				if (DB::isError($result)) {
-					die (_("Database error"));
+					die (_("Database error (manageaccount 39)"));
 				}
 				$cnt = $result->numRows($result);
 
@@ -60,7 +60,7 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 				$result = $handle->query($query);
 
 				if (DB::isError($result)) {
-				        die (_("Database error"));
+				        die (_("Database error (manageaccount 63)"));
 				}
 				$cnt = $result->numRows($result);
 
@@ -209,7 +209,7 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 					$query = "SELECT password FROM accountuser WHERE username='".$_POST['username']."'";
 					$result = $handle->query($query);
 					if (DB::isError($result)) {
-						die (_("Database error"));
+						die (_("Database error (manageaccount 212)"));
 					}
 					$row = $result->fetchRow(DB_FETCHMODE_ASSOC, 0);
 					$password = $row['password'];
@@ -220,7 +220,7 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 						$query = "UPDATE accountuser SET password='$new_password' WHERE username='".$_POST['username']."'";
 						$result = $handle->query($query);
 						if (DB::isError($result)) {
-							die (_("Database error"));
+							die (_("Database error (manageaccount 223)"));
 						} else {
 							print "<h3>"._("Password changed")."</h3>";
 						}
@@ -272,7 +272,7 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 				$query = "SELECT prefix,domainquota FROM domain WHERE domain_name='".$_POST['domain']."'";
 				$result = $handle->query($query);
 				if (DB::isError($result)) {
-					die (_("Database error"));
+					die (_("Database error (manageaccount 275)"));
 				}
 				$row = $result->fetchRow(DB_FETCHMODE_ASSOC, 0);
 			
@@ -286,7 +286,7 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 					$query = "SELECT username FROM accountuser WHERE prefix='$prefix' ORDER BY username";
 					$result = $handle->query($query);
 					if (DB::isError($result)) {
-						die (_("Database error"));
+						die (_("Database error (manageaccount 289)"));
 					}
 
 					$cnt = $result->numRows($result);

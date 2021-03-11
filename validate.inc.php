@@ -118,14 +118,14 @@ $setforward = $forwardto = (isset($_POST['setforward']))?($_POST['setforward']):
 # Connecting to database
 $handle =& DB::connect($DB['DSN'],true);
 if (DB::isError($handle)) {
-	die (_("Database error"));
+	die (_("Database error (validate.inc 121)"));
 }
 
 # We check and remember list of domains for domain admin
 $query = "SELECT * FROM domainadmin WHERE adminuser='".$_SESSION['user']."'";
 $result = $handle->query($query);
 if (DB::isError($result)) {
-	die (_("Database error"));
+	die (_("Database error (validate.inc 128)"));
 }
 $cnt = $result->numRows();
 
@@ -233,7 +233,7 @@ if (! empty($action)){
 				$query = "SELECT * FROM adminuser WHERE username='".$_POST['newadminuser']."'";
 				$result = $handle->query($query);
 				if (DB::isError($result)) {
-					die (_("Database error"));
+					die (_("Database error (validate.inc 236)"));
 				}
 				if ($result->numRows()){
 					$authorized = FALSE;
@@ -249,7 +249,7 @@ if (! empty($action)){
 					$query="SELECT domain_name FROM domain WHERE domain_name='".$_POST['newdomain']."'";
 					$result= $handle->query($query);
 					if (DB::isError($result)) {
-						die (_("Database error"));
+						die (_("Database error (validate.inc 252)"));
 					}
 					if (!$result->numRows()){
 						$authorized = FALSE;
@@ -293,7 +293,7 @@ if (! empty($action)){
 				$query = "SELECT type FROM adminuser WHERE username='".$_POST['username']."'";
 				$result = $handle->query($query);
 				if (DB::isError($result)) {
-					die (_("Database error"));
+					die (_("Database error (validate.inc 296)"));
 				}
 				$row = $result->fetchRow(DB_FETCHMODE_ASSOC, 0);
 				$type = $row['type'];
@@ -307,7 +307,7 @@ if (! empty($action)){
 						$query = "SELECT type FROM adminuser WHERE type='0'";
 						$result = $handle->query($query);
 						if (DB::isError($result)) {
-							die (_("Database error"));
+							die (_("Database error (validate.inc 310)"));
 						}
 						$cnt = $result->numRows();
 
@@ -333,7 +333,7 @@ if (! empty($action)){
 					$query = "SELECT domain_name FROM domain WHERE domain_name='".$_POST['newdomain']."'";
 					$result = $handle->query($query);
 					if (DB::isError($result)) {
-						die (_("Database error"));
+						die (_("Database error (validate.inc 336)"));
 					}
 					if (!$result->numRows()){
 						$authorized = FALSE;
@@ -342,7 +342,7 @@ if (! empty($action)){
 						$query = "SELECT * FROM domainadmin WHERE adminuser='".$_POST['username']."' AND domain_name='".$_POST['newdomain']."'";
 						$result = $handle->query($query);
 						if (DB::isError($result)) {
-							die (_("Database error"));
+							die (_("Database error (validate.inc 345)"));
 						}
 						if ($result->numRows()) {
 							$err_msg = _("Admin already repsonsible for the domain")." ".$_POST['newdomain'];
@@ -383,7 +383,7 @@ if (! empty($action)){
 				$query = "SELECT type FROM adminuser WHERE username='".$_GET['username']."'";
 				$result = $handle->query($query);
 				if (DB::isError($result)) {
-					die (_("Database error"));
+					die (_("Database error (validate.inc 386)"));
 				}
 				$row = $result->fetchRow(DB_FETCHMODE_ASSOC, 0);
 				$type = $row['type'];
@@ -392,7 +392,7 @@ if (! empty($action)){
 				$query = "SELECT type FROM adminuser WHERE type='0'";
 				$result = $handle->query($query);
 				if (DB::isError($result)) {
-					die (_("Database error"));
+					die (_("Database error (validate.inc 395)"));
 				}
 				$cnt = $result->numRows();
 				
@@ -453,7 +453,7 @@ if (! empty($action)){
 				$query = "SELECT * FROM accountuser WHERE username='".$_POST['username']."'";
 				$result = $handle->query($query);
 				if (DB::isError($result)) {
-					die (_("Database error"));
+					die (_("Database error (validate.inc 456)"));
 				}
 				$cnt = $result->numRows();
 				if ($cnt != 0) {
@@ -465,7 +465,7 @@ if (! empty($action)){
 				$query = "SELECT alias FROM virtual WHERE alias='".$_POST['email']."@".$_POST['domain']."'";
 				$result = $handle->query($query);
 				if (DB::isError($result)) {
-					die (_("Database error"));
+					die (_("Database error (validate.inc 468)"));
 				}
 				$cnt = $result->numRows();
 				if ($cnt != 0) {
@@ -504,7 +504,7 @@ if (! empty($action)){
 			$query = "SELECT username FROM accountuser WHERE username='".$_GET['username']."' AND domain_name='".$_GET['domain']."'";
 			$result = $handle->query($query);
 			if (DB::isError($result)) {
-				die (_("Database error"));
+				die (_("Database error (validate.inc 507)"));
 			}
 			if (!$result->numRows()){
 				$authorized = FALSE;
@@ -529,7 +529,7 @@ if (! empty($action)){
 			$query = "SELECT username FROM accountuser WHERE username='".$_GET['username']."' AND domain_name='".$_GET['domain']."'";
 			$result = $handle->query($query);
 			if (DB::isError($result)) {
-				die (_("Database error"));
+				die (_("Database error (validate.inc 532)"));
 			}
 			if (!$result->numRows()){
 				$authorized = FALSE;
@@ -550,7 +550,7 @@ if (! empty($action)){
 				$query = "SELECT username FROM accountuser WHERE username='".$_GET['username']."' AND domain_name='".$_GET['domain']."'";
 				$result = $handle->query($query);
 				if (DB::isError($result)) {
-					die (_("Database error"));
+					die (_("Database error (validate.inc 553)"));
 				}
 				if (!$result->numRows()) {
 					$authorized = FALSE;
@@ -571,7 +571,7 @@ if (! empty($action)){
 				$query = "SELECT username FROM accountuser WHERE username='".$_POST['username']."' AND domain_name='".$_POST['domain']."'";
 				$result = $handle->query($query);
 				if (DB::isError($result)) {
-					die (_("Database error"));
+					die (_("Database error (validate.inc 574)"));
 				}
 				if (!$result->numRows()) {
 					$authorized = FALSE;
@@ -614,7 +614,7 @@ if (! empty($action)){
 						$query = "SELECT quota FROM domain WHERE domain_name='".$_POST['domain']."'";
 						$result = $handle->query($query);
 						if (DB::isError($result)) {
-							die (_("Database error"));
+							die (_("Database error (validate.inc 617)"));
 						}
 
 						$row = $result->fetchRow(DB_FETCHMODE_ASSOC, 0);
@@ -623,7 +623,7 @@ if (! empty($action)){
 						$query = "SELECT * FROM accountuser WHERE username='".$_POST['username']."' AND domain_name='".$_POST['domain']."'";
 						$result = $handle->query($query);
 						if (DB::isError($result)) {
-							die (_("Database error"));
+							die (_("Database error (validate.inc 626)"));
 						}
 					
 						if ($result->numRows()) {
@@ -649,7 +649,7 @@ if (! empty($action)){
 			$query = "SELECT username FROM accountuser WHERE username='".$_GET['username']."' AND domain_name='".$_GET['domain']."'";
 			$result = $handle->query($query);
 			if (DB::isError($result)) {
-				die (_("Database error"));
+				die (_("Database error (validate.inc 652)"));
 			}
 			if (!$result->numRows()){
 				$authorized = FALSE;
@@ -660,7 +660,7 @@ if (! empty($action)){
 			                $query = "SELECT freeaddress FROM domain WHERE domain_name='".$_GET['domain']."'";
 					$result = $handle->query($query);
 					if (DB::isError($result)) {
-						die (_("Database error"));
+						die (_("Database error (validate.inc 663)"));
 					}
 					$row = $result->fetchRow(DB_FETCHMODE_ASSOC, 0);
 					$freeaddress = $row['freeaddress'];
@@ -690,7 +690,7 @@ if (! empty($action)){
 						}
 						$result = $handle->query($query);
 						if (DB::isError($result)) {
-							die (_("Database error"));
+							die (_("Database error (validate.inc 693)"));
 						}
 						$cnt = $result->numRows();
 						if ($cnt != 0) {
@@ -715,7 +715,7 @@ if (! empty($action)){
 			$query = "SELECT username FROM accountuser WHERE username='".$_GET['username']."' AND domain_name='".$_GET['domain']."'";
 			$result = $handle->query($query);
 			if (DB::isError($result)) {
-				die (_("Database error"));
+				die (_("Database error (validate.inc 718)"));
 			}
 			if (!$result->numRows()){
 				$authorized = FALSE;
@@ -726,7 +726,7 @@ if (! empty($action)){
 			                $query = "SELECT freeaddress FROM domain WHERE domain_name='".$_GET['domain']."'";
 					$result = $handle->query($query);
 					if (DB::isError($result)) {
-						die (_("Database error"));
+						die (_("Database error (validate.inc 729)"));
 					}
 					$row = $result->fetchRow(DB_FETCHMODE_ASSOC, 0);
 					$freeaddress = $row['freeaddress'];
@@ -757,7 +757,7 @@ if (! empty($action)){
 							$query = "SELECT alias FROM virtual WHERE alias='".$fullalias."'";
 							$result = $handle->query($query);
 							if (DB::isError($result)) {
-								die (_("Database error"));
+								die (_("Database error (validate.inc 760)"));
 							}
 							$cnt = $result->numRows();
 							if ($cnt != 0) {
@@ -785,7 +785,7 @@ if (! empty($action)){
 			$query = "SELECT username FROM accountuser WHERE username='".$_GET['username']."' AND domain_name='".$_GET['domain']."'";
 			$result = $handle->query($query);
 			if (DB::isError($result)) {
-				die (_("Database error"));
+				die (_("Database error (validate.inc 788)"));
 			}
 			if (!$result->numRows()){
 				$authorized = FALSE;
@@ -805,7 +805,7 @@ if (! empty($action)){
 			$query = "SELECT username FROM accountuser WHERE username='".$_GET['username']."' AND domain_name='".$_GET['domain']."'";
 			$result = $handle->query($query);
 			if (DB::isError($result)) {
-				die (_("Database error"));
+				die (_("Database error (validate.inc 808)"));
 			}
 			if (!$result->numRows()){
 				$authorized = FALSE;
@@ -826,7 +826,7 @@ if (! empty($action)){
 			$query = "SELECT username FROM accountuser WHERE username='".$_GET['username']."' AND domain_name='".$_GET['domain']."'";
 			$result = $handle->query($query);
 			if (DB::isError($result)) {
-				die (_("Database error"));
+				die (_("Database error (validate.inc 829)"));
 			}
 			if (!$result->numRows()){
 				$authorized = FALSE;
@@ -847,7 +847,7 @@ if (! empty($action)){
 			$query = "SELECT username FROM accountuser WHERE username='".$_GET['username']."' AND domain_name='".$_GET['domain']."'";
 			$result = $handle->query($query);
 			if (DB::isError($result)) {
-				die (_("Database error"));
+				die (_("Database error (validate.inc 850)"));
 			}
 			if (!$result->numRows()){
 				$authorized = FALSE;
@@ -896,7 +896,7 @@ if (! empty($action)){
 					$query = "SELECT domain_name FROM domain WHERE domain_name='".$_GET['domain']."' OR prefix='".$_GET['prefix']."'";
 					$result = $handle->query($query);
 					if (DB::isError($result)) {
-						die (_("Database error"));
+						die (_("Database error (validate.inc 899)"));
 					}
 					if ($result->numRows()){
 						$authorized = FALSE;
@@ -943,7 +943,7 @@ if (! empty($action)){
 					$query = "SELECT domain_name FROM domain WHERE domain_name='".$_GET['newdomain']."' AND domain_name!='".$_GET['domain']."' OR prefix='".$_GET['newprefix']."' AND prefix!='".$_GET['prefix']."'";
 					$result = $handle->query($query);
 					if (DB::isError($result)) {
-						die (_("Database error"));
+						die (_("Database error (validate.inc 946)"));
 					}
 					if ($result->numRows()){
 						$authorized = FALSE;
@@ -1094,7 +1094,7 @@ if (! empty($action)){
 			$query = "SELECT * FROM virtual WHERE alias='".$_GET['alias']."' AND dest='".$_GET['dest']."' AND username='".$_GET['domain']."'";
 			$result = $handle->query($query);
 			if (DB::isError($result)) {
-				die (_("Database error"));
+				die (_("Database error (validate.inc 1097)"));
 			}
 			if ($result->numRows()){
 				$authorized = FALSE;

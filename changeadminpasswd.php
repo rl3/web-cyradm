@@ -94,7 +94,7 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 			$query = "UPDATE adminuser SET password='".$new_password."' WHERE username='".$_SESSION['user']."' AND password='".$old_password."'";
 			$result =& $handle->query($query);
 			if (DB::isError($result) || $handle->affectedRows()==0) {
-				print _("Database error");
+				print _("Database error (changeadminpasswd 97)");
 				echo ".&nbsp;";
 				print _("Password not changed");
 			} else {

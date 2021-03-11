@@ -25,7 +25,7 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 		
                 $handle = DB::connect($DB['DSN'], true);
                 if (DB::isError($handle)) {
-    	            die (_("Database error"));
+    	            die (_("Database error (newalias 28)"));
                 }
 
                 $result1 = $handle->query($query1);

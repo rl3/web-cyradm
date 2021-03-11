@@ -17,7 +17,7 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 			$query = "SELECT type FROM adminuser WHERE username='".$_GET['username']."'";
 			$result = $handle->query($query);
 			if (DB::isError($result)) {
-				die (_("Database error"));
+				die (_("Database error (editadminuser 20)"));
 			}
 			$row = $result->fetchRow(DB_FETCHMODE_ASSOC, 0);
 			$type = $row['type'];
@@ -120,7 +120,7 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 								$query = "SELECT * FROM domainadmin WHERE adminuser='".$_GET['username']."'";
 								$result = $handle->query($query);
 								if (DB::isError($result)) {
-									die (_("Database error"));
+									die (_("Database error (editadminuser 123)"));
 								}
 								$cnt = $result->numRows();
 
@@ -182,7 +182,7 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 				$query = "SELECT type FROM adminuser WHERE username='".$_POST['username']."'";
 				$result = $handle->query($query);
 				if (DB::isError($result)) {
-					die (_("Database error"));
+					die (_("Database error (editadminuser 185)"));
 				}
 				$row = $result->fetchRow(DB_FETCHMODE_ASSOC, 0);
 				$type = $row['type'];
@@ -192,7 +192,7 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 					$query = "DELETE FROM domainadmin WHERE adminuser='".$_POST['username']."'";
 					$result = $handle->query($query);
 					if (DB::isError($result)) {
-						die (_("Database error"));
+						die (_("Database error (editadminuser 195)"));
 					}
 				}
 				
@@ -202,7 +202,7 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 					$query = "UPDATE adminuser SET type='".$_POST['newtype']."' WHERE username='".$_POST['username']."'";
 					$result = $handle->query($query);
 					if (DB::isError($result)) {
-						die (_("Database error"));
+						die (_("Database error (editadminuser 205)"));
 					}
 					
 					if ($_POST['newtype']==0){
@@ -210,7 +210,7 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 						$query = "INSERT INTO domainadmin (domain_name,adminuser) VALUES ('*','".$_POST['username']."')";
   						$result = $handle->query($query);
 						if (DB::isError($result)) {
-							die (_("Database error"));
+							die (_("Database error (editadminuser 213)"));
 						}
 					} else {
 						# no responsibility is set for domainadmins by default
@@ -222,7 +222,7 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 							$query = "INSERT INTO domainadmin (domain_name,adminuser) VALUES('$key', '".$_POST['username']."')";
 							$result = $handle->query($query);
 							if (DB::isError($result)) {
-								die (_("Database error"));
+								die (_("Database error (editadminuser 225)"));
 							}
 						}
 					}
@@ -232,7 +232,7 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 						$query = "INSERT INTO domainadmin (domain_name,adminuser) VALUES('".$_POST['newdomain']."','".$_POST['username']."')";
 						$result = $handle->query($query);
 						if (DB::isError($result)) {
-							die (_("Database error"));
+							die (_("Database error (editadminuser 235)"));
 						}
 					}
 				}
@@ -245,7 +245,7 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 					$query = "UPDATE adminuser SET password='".$new_password."' WHERE username='".$_POST['username']."'";
 					$result = $handle->query($query);
 					if (DB::isError($result)) {
-						die (_("Database error"));
+						die (_("Database error (editadminuser 248)"));
 					}
 				}
 				$_GET['domain'] = $_POST['domain'];

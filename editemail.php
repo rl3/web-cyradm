@@ -39,7 +39,7 @@ if ($authorized){
 		} else {
 			?>
 			<p>
-				<?php print _("Database error, please try again");?>
+				<?php print _("Database error (editemail 42), please try again");?>
 			</p>
 			<?php
 		}

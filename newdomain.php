@@ -274,7 +274,7 @@ if ($authorized) {
 				} else {
 ?>
 					<h3>
-						<?php print _("Database error, please try again");?>
+						<?php print _("Database error (newdomain 277), please try again");?>
 						<?php # echo get_var_dump($result); ?>
 					</h3>
 <?php
