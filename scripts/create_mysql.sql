@@ -115,7 +115,7 @@ CREATE TABLE `log` (
   `msg` text NOT NULL,
   `user` varchar(255) NOT NULL DEFAULT '',
   `host` varchar(255) NOT NULL DEFAULT '',
-  `time` datetime NOT NULL DEFAULT '2000-00-00 00:00:00',
+  `time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `pid` varchar(255) NOT NULL DEFAULT '',
   PRIMARY KEY (`id`),
   KEY `idx_log_user` (`user`)

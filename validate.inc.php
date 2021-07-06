@@ -66,7 +66,7 @@ function ValidPassword($password) {
 }
 
 function ValidDomain($domain) {
-        if (preg_match("/^\w+$/")) return TRUE;
+        if (preg_match("/^\w+$/", $domain)) return TRUE;
 	if (!preg_match("/^([[:alnum:]]|xn--)([.-]?[[:alnum:]])*[.][a-wyz][[:alpha:]](f|g|l|m|t|u|v|z|ro|fo|op|pa|me|seum|ga|rlin)?$/i",$domain)){
 		return FALSE;
 	} else {
