@@ -13,7 +13,7 @@ $DEFAULTLANG = "en_EN";
 
 # The Cyrus login stuff
 $CYRUS = array(
-	'HOST'	=> 'localhost',
+	'HOST'	=> 'localhost', # use 'ssl://servername' or 'tls://servername' for SSL/TLS
 	'PORT'	=> 143,
 	'ADMIN'	=> 'cyrus',
 	'PASS'	=> 'secret'
