@@ -1,5 +1,9 @@
 <?php
 
+if (file_exists("./config/special_defines.php")) {
+    require("./config/special_defines.php");
+}
+
 function getmicrotime(){
     list($usec, $sec) = explode(" ",microtime());
     return ((float)$usec + (float)$sec);
@@ -23,7 +27,7 @@ if (file_exists("./migrate.php")){
 	die(_("migrate.php exists! please delete or rename it"));
 }
 
-define('WC_BASE', dirname(__FILE__));
+if ( !defined('WC_BASE') ) define('WC_BASE', dirname(__FILE__));
 
 $wc_configured = @file_exists(WC_BASE . '/config/conf.php');
 

@@ -1,0 +1,3 @@
+<?php
+
+define('WC_BASE', '/var/www/html/web-cyradm');
