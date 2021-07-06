@@ -42,6 +42,7 @@ if ($_POST){
 // ############################### FUNCTIONS ##################################
 
 function ValidMail($email) {
+        if (preg_match("/^[0-9a-z]([-_.]?[0-9a-z])*@\w+$/i",$email)) return TRUE;
 	if (!preg_match("/^[0-9a-z]([-_.]?[0-9a-z])*@([[:alnum:]]|xn--)([.-]?[[:alnum:]])*[.][a-wyz][[:alpha:]](f|g|l|m|t|u|v|z|ro|fo|op|pa|me|seum)?$/i",$email)){
 		return FALSE;
 	} else {
