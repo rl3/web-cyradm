@@ -48,7 +48,7 @@ if ($authorized) {
 		<?php
 			include WC_BASE . "/editaccount.php";
 		} else {
-			$query = "DELETE FROM virtual WHERE alias='".$_GET['alias']."' AND username='".$_GET['username']."'";
+			$query = "DELETE FROM `virtual` WHERE alias='".$_GET['alias']."' AND username='".$_GET['username']."'";
 			$result = $handle->query($query);
 			if (DB::isError($result)) {
 				die (_("Database error (deleteemail 54)"));

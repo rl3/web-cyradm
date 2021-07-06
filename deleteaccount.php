@@ -76,14 +76,14 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 					die ("Error: " . $error);
 				}
 
-				$query ="DELETE FROM virtual WHERE username='".$_GET['username']."'";
+				$query ="DELETE FROM `virtual` WHERE username='".$_GET['username']."'";
 				$result = $handle->query($query);
 				if (DB::isError($result)) {
 					die (_("Database error (deleteaccount 82)"));
 				}
 
 				// Removing forwards
-				$query = "DELETE FROM virtual WHERE alias='".$_GET['username']."' AND username=''";
+				$query = "DELETE FROM `virtual` WHERE alias='".$_GET['username']."' AND username=''";
 				$result = $handle->query($query);
 				if (DB::isError($result)) {
 					die (_("Database error (deleteaccount 89)"));

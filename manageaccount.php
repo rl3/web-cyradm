@@ -56,7 +56,7 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 					}
 				}
 				
-				$query = "SELECT status FROM virtual WHERE username ='".$_GET['username']."' LIMIT 1";
+				$query = "SELECT status FROM `virtual` WHERE username ='".$_GET['username']."' LIMIT 1";
 				$result = $handle->query($query);
 
 				if (DB::isError($result)) {
@@ -254,7 +254,7 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 				}
 				$query = "UPDATE accountuser SET imap='".$_POST['imap']."', pop='".$_POST['pop']."', sieve='".$_POST['sieve']."', smtpauth='".$_POST['smtpauth']."' WHERE username='".$_POST['username']."'";
 				$result1 = $handle->query($query);
-				$query = "UPDATE virtual SET status='".$_POST['smtp']."' WHERE username='".$_POST['username']."'";
+				$query = "UPDATE `virtual` SET status='".$_POST['smtp']."' WHERE username='".$_POST['username']."'";
 				$result2 = $handle->query($query);
 				if ($result1 && $result2) {
 					print "<h3>"._("Services successfully changed")."</h3>";

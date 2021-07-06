@@ -23,9 +23,9 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 		
 			if (!empty($_GET['confirmed']) && empty($_GET['cancel'])) {
 				if ($freeaddress != "YES") {
-					$query = "INSERT INTO virtual (alias,dest,username) VALUES ('".$_GET['alias']."@".$_GET['domain']."','".$_GET['dest']."','".$_GET['username']."')";
+					$query = "INSERT INTO `virtual` (alias,dest,username) VALUES ('".$_GET['alias']."@".$_GET['domain']."','".$_GET['dest']."','".$_GET['username']."')";
 				} else {
-					$query = "INSERT INTO virtual (alias,dest,username) VALUES ('".$_GET['alias']."@".$_GET['aliasdomain']."','".$_GET['dest']."','".$_GET['username']."')";
+					$query = "INSERT INTO `virtual` (alias,dest,username) VALUES ('".$_GET['alias']."@".$_GET['aliasdomain']."','".$_GET['dest']."','".$_GET['username']."')";
 				}
 				$result = $handle->query($query);
 

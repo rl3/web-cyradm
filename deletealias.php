@@ -52,7 +52,7 @@ if ($authorized) {
 	} else {
 		if (!empty($_GET['dest'])) {
 			// Remove a destination
-			$query = "DELETE FROM virtual WHERE alias='".$_GET['alias']."' AND dest='".$_GET['dest']."' AND username = '".$_GET['domain']."'";
+			$query = "DELETE FROM `virtual` WHERE alias='".$_GET['alias']."' AND dest='".$_GET['dest']."' AND username = '".$_GET['domain']."'";
 			$result = $handle->query($query);
 			if (DB::isError($result)) {
 				die (_("Database error (deletealias 58)"));
@@ -62,7 +62,7 @@ if ($authorized) {
 			}
 		} else {
 			// Removing an entire alias
-			$query = "DELETE FROM virtual WHERE alias = '".$_GET['alias']."' AND username = '".$_GET['domain']."'";
+			$query = "DELETE FROM `virtual` WHERE alias = '".$_GET['alias']."' AND username = '".$_GET['domain']."'";
 			$result = $handle->query($query);
 			if (DB::isError($result)) {
 				die (_("Database error (deletealias 68)"));

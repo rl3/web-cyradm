@@ -72,7 +72,7 @@ if ($authorized) {
 					$cyr_conn->imap_login();
 
 					# First Delete all stuff related to the domain from the database
-					$query = "DELETE FROM virtual WHERE alias LIKE '%@".$_GET['domain']."'";
+					$query = "DELETE FROM `virtual` WHERE alias LIKE '%@".$_GET['domain']."'";
 					$result = $handle->query($query);
 
 					$query = "DELETE FROM accountuser WHERE domain_name='".$_GET['domain']."'";
@@ -84,10 +84,10 @@ if ($authorized) {
 					for ($i=0; $i<$cnt1; $i++) {
 						$row = $result1->fetchRow(DB_FETCHMODE_ASSOC, $i);
 						$username = $row['username'];
-						$query = "DELETE FROM virtual WHERE username='".$username."'";
+						$query = "DELETE FROM `virtual` WHERE username='".$username."'";
 						$result = $handle->query($query);
 						# Removing forwards
-						$query = "DELETE FROM virtual WHERE alias='".$username."'";
+						$query = "DELETE FROM `virtual` WHERE alias='".$username."'";
 						$result = $handle->query($query);
 
 						# And also delete the Usermailboxes from the cyrus system

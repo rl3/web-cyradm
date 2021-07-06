@@ -14,7 +14,7 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 <?php
 	if ($authorized) {
 		if (!empty($_GET['confirmed']) AND empty($_GET['cancel'])){
-			$query = "DELETE from virtual WHERE alias='@".$_GET['domain']."'";
+			$query = "DELETE from `virtual` WHERE alias='@".$_GET['domain']."'";
 			$result = $handle->query($query);
 			if (DB::isError($result)) {
 				die (_("Database error (delete_catchall 20)"));

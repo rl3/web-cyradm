@@ -18,16 +18,16 @@ if ($authorized){
 	$row = $result->fetchRow(DB_FETCHMODE_ASSOC, 0);
 	$freeaddress=$row['freeaddress'];
 
-	$query = "SELECT * FROM virtual WHERE alias='".$_GET['alias']."'";
+	$query = "SELECT * FROM `virtual` WHERE alias='".$_GET['alias']."'";
 	$result = $handle->query($query);
 	$row = $result->fetchRow(DB_FETCHMODE_ASSOC, 0);
 	$alias = $row['alias'];
 
 	if (!empty($_GET['confirmed']) && empty($_GET['cancel'])) {
 		if ($freeaddress!="YES") {
-			$query = "UPDATE virtual SET alias='".$_GET['newalias']."@".$_GET['domain']."', dest='".$_GET['newdest']."' WHERE alias='".$alias."' AND username='".$_GET['username']."'";
+			$query = "UPDATE `virtual` SET alias='".$_GET['newalias']."@".$_GET['domain']."', dest='".$_GET['newdest']."' WHERE alias='".$alias."' AND username='".$_GET['username']."'";
 		} else {
-			$query = "UPDATE virtual SET alias='".$_GET['newalias']."@".$_GET['aliasdomain']."', dest='".$_GET['newdest']."' WHERE alias='".$alias."' AND username='".$_GET['username']."'";
+			$query = "UPDATE `virtual` SET alias='".$_GET['newalias']."@".$_GET['aliasdomain']."', dest='".$_GET['newdest']."' WHERE alias='".$alias."' AND username='".$_GET['username']."'";
 		}
 		$result = $handle->query($query);
 		if (!DB::isError($result)){

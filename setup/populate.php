@@ -73,7 +73,7 @@ $query6="CREATE TABLE domainadmin (
   adminuser varchar(255) NOT NULL default ''
 ) TYPE=MyISAM;";
 
-$query7="CREATE TABLE virtual (
+$query7="CREATE TABLE `virtual` (
   alias varchar(255) NOT NULL default '',
   dest longtext,
   username varchar(50) NOT NULL default '',

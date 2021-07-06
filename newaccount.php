@@ -286,7 +286,7 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 				die (_("Database error (newaccount 286)"));
 			}
 
-			$query = "INSERT INTO virtual (alias, dest, username, status) values ( '".$_POST['email']."@".$_POST['domain']."','".$username."','".$username."','1')";
+			$query = "INSERT INTO `virtual` (alias, dest, username, status) values ( '".$_POST['email']."@".$_POST['domain']."','".$username."','".$username."','1')";
 			$result = $handle->query($query);
 			if (DB::isError($result)) {
 				die (_("Database error (newaccount 292)"));

@@ -47,7 +47,7 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 		
 		if (empty($confirmed)){
 		
-	        $query2         = "SELECT * FROM virtual WHERE username='$prefix' order by alias";
+	        $query2         = "SELECT * FROM `virtual` WHERE username='$prefix' order by alias";
 		$result2        = $handle->query($query2);
 		$cnt2           = $result2->numRows($result2);
 		
